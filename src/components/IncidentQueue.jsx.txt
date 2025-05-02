@@ -1,0 +1,25 @@
+import React, { useEffect, useState } from 'react';
+import { fetchIncidents } from '../services/dataService';
+
+export default function IncidentQueue() {
+  const [incidents, setIncidents] = useState([]);
+
+  useEffect(() => {
+    // On mount, load mock incidents and store in state
+    fetchIncidents().then(data => setIncidents(data));
+  }, []);
+
+  return (
+    <section style={/* inline styling for DOS look */}>
+      <h2>Incident Queue</h2>
+      <ul>
+        {incidents.map(i => (
+          <li key={i.id}>
+            <strong>#{i.id}</strong> [{i.priority}] {i.type} @ {i.location}
+            <em> Units: {i.units.join(', ')}</em>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

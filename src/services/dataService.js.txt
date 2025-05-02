@@ -1,0 +1,7 @@
+// Fetch mock incidents for the dispatch UI
+export function fetchIncidents() {
+  return Promise.resolve([
+    { id: 1, type: "Structure Fire", location: "4th & Main", priority: "High", units: ["E20","M5"] },
+    { id: 2, type: "Medical Aid",    location: "Elm St.",    priority: "Medium", units: ["A2"] },
+  ]);
+}
